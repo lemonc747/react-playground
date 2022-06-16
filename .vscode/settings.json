@@ -1,14 +1,22 @@
 {
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false,
-  "prettier.arrowParens": "avoid", // 箭头函数只有一个参数时，是否需要括号
-  "prettier.bracketSpacing": true, // 对象或数组内，括号和文字间是否需要空格
-  "prettier.endOfLine": "auto",
-  "prettier.htmlWhitespaceSensitivity": "strict",
-  "prettier.jsxSingleQuote": true,
-  "prettier.jsxBracketSameLine": true,
-  "prettier.printWidth": 120,
-  "prettier.semi": true, // 句尾是否加分号
-  "prettier.tabWidth": 2,
-  "prettier.useTabs": true,
+	// 关闭自动保存
+	"files.autoSave": "off",
+	"editor.tabSize": 2,
+	"editor.suggestSelection": "recentlyUsed",
+	// 保存时格式化
+	"editor.formatOnSave": true,
+	// 默认使用prettier格式化
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.detectIndentation": false,
+	// prettier相关配置(也可以放到单独的配置文件中)
+	"prettier.arrowParens": "avoid", // 箭头函数只有一个参数时，是否需要括号
+	"prettier.bracketSpacing": true, // 对象或数组内，括号和文字间是否需要空格
+	"prettier.endOfLine": "auto",
+	"prettier.htmlWhitespaceSensitivity": "strict",
+	"prettier.jsxSingleQuote": true,
+	"prettier.jsxBracketSameLine": true,
+	"prettier.printWidth": 120,
+	"prettier.semi": true, // 句尾是否加分号
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": true
 }
