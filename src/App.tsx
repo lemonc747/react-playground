@@ -2,6 +2,8 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
+import CompA from "./pages/a";
+import CompB from "./pages/b";
 
 function App() {
 	const a = (a: number) => {
@@ -13,8 +15,8 @@ function App() {
 				<img src={logo} className='App-logo' alt='logo' />
 				<h1>Welcome to React Router!</h1>
 				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='about' element={<About />} />
+					<Route path='/' element={<CompA />} />
+					<Route path='about' element={<CompB />} />
 				</Routes>
 			</header>
 		</div>

@@ -5,10 +5,15 @@
 	"editor.suggestSelection": "recentlyUsed",
 	// 保存时格式化
 	"editor.formatOnSave": true,
-	// 默认使用prettier格式化
+	// // 默认使用prettier格式化
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.detectIndentation": false,
-	// prettier相关配置(也可以放到单独的配置文件中)
+	// ********** eslint配置
+	// 保存时修复所有能修复的问题
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	// ********** prettier相关配置(也可以放到单独的配置文件中)
 	"prettier.arrowParens": "avoid", // 箭头函数只有一个参数时，是否需要括号
 	"prettier.bracketSpacing": true, // 对象或数组内，括号和文字间是否需要空格
 	"prettier.endOfLine": "auto",
@@ -18,5 +23,6 @@
 	"prettier.printWidth": 120,
 	"prettier.semi": true, // 句尾是否加分号
 	"prettier.tabWidth": 2,
-	"prettier.useTabs": true
+	"prettier.useTabs": true,
+	"typescript.tsdk": "node_modules\\typescript\\lib"
 }

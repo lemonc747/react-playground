@@ -4,6 +4,7 @@ module.exports = {
 	plugins: ["@typescript-eslint", "react"],
 	rules: {},
 };
+
 /**
  * reference: https://zhuanlan.zhihu.com/p/62401626
  * 
@@ -13,6 +14,5 @@ module.exports = {
     yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
   3. Visual Studio Code 集成 ESLint 与 Prettier
     安装vsc插件
-
  * 
  */
