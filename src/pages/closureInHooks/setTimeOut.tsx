@@ -11,18 +11,22 @@
  */
 import React, { useState, useRef, useEffect } from 'react';
 
+let count2 = 0;
+
 const SetTimeOut = () => {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
+
+  const timerFn = () =>
+    setTimeout(() => {
+      if (ref.current) {
+        ref.current.innerHTML = `【时间：${Date.now()}||定时器内的count：${count}】||变量count2：${count2}`;
+      }
+    }, 5000);
 
   useEffect(() => {
     // 场景1：useEffect中使用定时器
-    setInterval(() => {
-      console.log(count);
-      if (ref.current) {
-        ref.current.innerHTML = `【时间：${Date.now()}||定时器内的count：${count}】`;
-      }
-    }, 2000);
+    timerFn();
     // 场景2：任意异步函数，例如请求
     // 场景3：return的销毁函数
   }, []);
@@ -32,8 +36,16 @@ const SetTimeOut = () => {
       <div>
         useEffct中定时打印Count的值：<span ref={ref}></span>
       </div>
-      <button onClick={() => setCount(c => c + 1)}>count自增1</button>
+      <button
+        onClick={() => {
+          setCount(c => c + 1);
+          count2 = count2 + 1;
+        }}>
+        count自增1
+      </button>
+      <button onClick={() => timerFn()}>手动开启一个定时器</button>
       <div>实时的count的值：{count}</div>
+      <div style={{ color: 'red' }}>bug现象：无论count的值如何改变，定时器内的count都是初始值</div>
     </div>
   );
 };
