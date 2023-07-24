@@ -2,7 +2,9 @@ import React, { useState, useMemo } from 'react';
 import {
   closestCenter,
   DndContext,
+  DragEndEvent,
   DragOverlay,
+  DragStartEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
@@ -37,12 +39,12 @@ export interface ColumnProps<T> {
  */
 const SortableTable = <T,>(props: {
   styles: any;
-  rowKey: string | ((record: T, index: number) => string);
+  rowKey: string | ((record: T, index?: number) => string); // todo: 定义为string，如何确保返回string|number，如何约束T
   columns: ColumnProps<T>[];
   data: T[];
   onSort: (data: T[]) => void;
 }) => {
-  const { rowKey, columns, data } = props;
+  const { rowKey, columns, data, onSort } = props;
   const [activeId, setActiveId] = useState(null);
   // const [items, setItems] = useState(['1', '2', '3']);
   const sensors = useSensors(
@@ -64,30 +66,28 @@ const SortableTable = <T,>(props: {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}>
       <SortableContext items={keyList} strategy={verticalListSortingStrategy}>
-        {items.map(id => (
-          <SortableItem key={id} id={id} />
+        {data.map(item => (
+          <SortableItem key={rowKey(item)} data={item} />
         ))}
       </SortableContext>
       <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
     </DndContext>
   );
 
-  function handleDragStart(event) {
+  function handleDragStart(event: DragStartEvent) {
     const { active } = event;
-
-    setActiveId(active.id);
+    active.setActiveId(active.id);
   }
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
-      setItems(items => {
-        const oldIndex = items.indexOf(active.id);
-        const newIndex = items.indexOf(over.id);
+    if (active.id !== over?.id) {
+      const oldIndex = data.indexOf(active.id);
+      const newIndex = data.indexOf(over?.id);
 
-        return arrayMove(items, oldIndex, newIndex);
-      });
+      return arrayMove(data, oldIndex, newIndex);
+      onSort(data => {});
     }
 
     setActiveId(null);
