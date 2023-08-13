@@ -1,4 +1,5 @@
 import React from 'react';
+import SortableList from './sortableList';
 
 const DndKit = () => {
   // const test = () => {
@@ -14,7 +15,11 @@ const DndKit = () => {
   //   console.log('results', result);
   // }
 
-  return <div>11111</div>;
+  return (
+    <div>
+      <SortableList />
+    </div>
+  );
 };
 
 export default DndKit;
