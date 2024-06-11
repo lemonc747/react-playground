@@ -25,7 +25,7 @@ const MyPdfViewer = () => {
   const canvasRef = useRef(null);
 
   const { pdfDocument, pdfPage } = usePdf({
-    file: 'test.pdf',
+    file: 'http://localhost:3000/react-playground/rightpdf_udm_se_ds_watermark.pdf',
     page,
     canvasRef,
   });
