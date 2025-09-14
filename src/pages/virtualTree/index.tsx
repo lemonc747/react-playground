@@ -1,5 +1,6 @@
-import TestVTreeComp from './virturalTreeComponent';
+// import TestVTreeComp from './virturalTreeComponent';
 
-const VTreeComp = () => <TestVTreeComp />;
+// const VTreeComp = () => <TestVTreeComp />;
 
-export default VTreeComp;
+// export default VTreeComp;
+export const a = 1;
